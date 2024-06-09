@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de gestión de denuncias</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="../js/administracion.js"></script>
+  </head>
+  <body>
+    <div class="box">
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Grupo de Investigación Tecnológica</p>
+            <p class="heading">-- A Coruña --</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="title">Sistema de Gestión de Denuncias</p>
+            <br>
+            <p class="heading is-size-4">Administración</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+              <figure class="image is-128x128">
+                <img src="..\img\Policia_Nacional_A.png">
+              </figure> 
+            </div>
+        </div>
+      </nav>
+    </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="../img/Policia_Nacional_B.png" width="200" height="auto">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Usuarios
+            </a>
+            <div class="navbar-dropdown">
+              <a id="userAlta" class="navbar-item">
+                Alta
+              </a>
+              <a id="userBaja"class="navbar-item">
+                Baja
+              </a>
+              <a id="userModi"class="navbar-item">
+                Modificar
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Tipología delictiva
+            </a>
+            <div class="navbar-dropdown">
+              <a id="tipoAlta" class="navbar-item">
+                Alta
+              </a>
+              <a id="tipoBaja" class="navbar-item">
+                Baja
+              </a>
+            </div>
+          </div>   
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Modus operandi
+            </a>
+            <div class="navbar-dropdown">
+              <a id="modusAlta" class="navbar-item">
+                Alta
+              </a>
+              <a id="modusBaja" class="navbar-item">
+                Baja
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+ <!-- Contenido a mostrar -->  
+ <!--Alta de modus-->
+  <div id="contenidoModusAlta" style="display: none;">
+    <p>
+      <div class="notification is-primary">      
+        <div class="form-container" >
+          <form id = "formModusAlta">
+            <div class="field is-horizontal has-background-light">
+              <div class="field-label is-normal">
+                <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Listado de modus:</label>
+              </div>
+              <table class="table is-bordered">
+                <thead>
+                  <tr>
+                    <th>Modus Operandi</th>
+                  </tr>
+                </thead>
+                <tbody id="tablaModus">
+                <!-- Aquí se muestran los datos de los modus -->
+                </tbody>
+              </table>
+              <div class="field-label is-normal">
+                <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Introduzca el nuevo modus:</label>
+              </div>
+              <div class="field-body"style="padding-left: 1cm;padding-right: 1cm;">
+                <div class="field">
+                  <p class="control">
+                    <input class="input" type="text" placeholder="Nuevo modus" name="nuevoModus" id="nuevoModus">
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="buttons is-responsive">
+              <button type ="submit" class="button is-link is-focused is-centered">Generar nuevo modus</button>
+            </div>
+          </form> 
+        </div>  
+      </div>  
+    </p>
+  </div>
+  <!--Baja de modus-->
+    <div id="contenidoModusBaja" style="display: none;">
+      <p>
+        <div class="notification is-primary">      
+          <div class="form-container" >
+            <form id = "formModusBaja">   
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal" style="width: 50%;">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Seleccione el modus operandi a eliminar</label>
+                </div>
+                <div class="field-body" style="width: 50%;">
+                  <div class="field">
+                    <div class="select is is-fullwidth">
+                      <select id="selectModusBaja">
+                        <option selected value="elemento1">Elemento1</option>
+                        <option value="elemento2">elemento2</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="buttons is-responsive">
+                <button type ="submit" class="button is-danger is-centered">Eliminar modus operandi</button>
+              </div> 
+            </form>
+          </div> 
+        </div>  
+      </p>
+    </div>
+  
+  <!--Alta de usuarios--> 
+    <div id="contenidoUserAlta" style="display: none;">
+      <p>
+        <div class="notification is-primary">  
+          <div class="form-container" >
+            <form id = "formUserAlta">
+                <div class="field is-horizontal has-background-light">
+                  <div class="field-label is-normal is-centered" style="width: 25%; padding-left: 1cm;padding-right: 1cm;">
+                    <label class="label" style="white-space: nowrap;">Listado de usuarios:</label>
+                  </div>
+                  <table class="table is-bordered">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Perfil</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tablaUsuarios">
+                      <!-- Aquí se muestran los datos de los usuarios -->
+                    </tbody>
+                  </table>
+                  <div class="field-label is-normal is-centered" style="width: 25%; padding-left: 1cm;padding-right: 1cm;">
+                    <label class="label" style="white-space: nowrap;">Introduzca el nuevo usuario:</label>
+                  </div>
+                  <div class="field-body" style="padding-left: 1cm;padding-right: 1cm;">
+                    <div class="field">
+                      <p class="control">
+                        <input class="input" type="text" placeholder="Nuevo usuario" name="nuevoUsuario" id="nuevoUsuario">
+                      </p>
+                      <p class="control">
+                        <select class="input" name="perfil" id="perfil">
+                          <option value="">Seleccione un perfil</option>
+                          <option value="Administrador">Administrador</option>
+                          <option value="Comisario">Comisario</option>
+                          <option value="Jefe de grupo">Jefe de grupo</option>
+                          <option value="Investigador">Investigador</option>
+                        </select>
+                      </p>
+                      <p class="control">
+                        <input class="input" type="password" placeholder="Contraseña" name="password" id="password">
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="buttons is-responsive">
+                <button type ="submit" class="button is-link is-focused is-centered">Generar nuevo usuario</button>
+              </div>
+            </form> 
+          </div>
+        </div>  
+      </p>
+    </div>
+    <!--baja de usuarios-->
+    <div id="contenidoUserBaja" style="display: none;">
+      <p>
+        <div class="notification is-primary"> 
+          <div class="form-container" >
+            <form id = "formUserBaja">     
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal" style="width: 50%;">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Seleccione el usuario a eliminar:</label>
+                </div>
+                <div class="field-body" style="width: 50%;">
+                  <div class="field">
+                    <div class="select is is-fullwidth">
+                      <select id="selectBajaUsuarios">
+                        <option selected value="elemento1">elemento1</option>
+                        <option value="elemento2">elemento2</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="buttons is-responsive">
+                <button type ="submit" class="button is-danger is-centered">Eliminar usuario</button>
+              </div> 
+            </form>
+          </div>
+        </div>  
+      </p>
+    </div>
+      <!--modificación de usuarios-->
+    <div id="contenidoModiUser" style="display: none;">
+      <p>
+        <div class="notification is-primary">      
+          <div class="form-container" >
+            <form id = "formModiUser">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal" style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">
+                  <label class="label">Seleccione el usuario a modificar:</label>
+                </div>
+                <div class="select">
+                  <select id="selectModiUsuarios">
+                  </select>
+                </div>
+                <div class="field-label is-normal"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">
+                  <label class="label">Seleccione el nuevo perfil:</label>
+                </div>
+                <div class="select">
+                  <select id="selectPerfilUsuarios">
+                    <option selected value="Investigador">Investigador</option>  
+                    <option value="Jefe de grupo">Jefe de grupo</option>  
+                    <option value="Comisario">Comisario</option>
+                    <option value="Administrador">Administrador</option>  
+                  </select>
+                </div>
+                <div class="field-label is-normal"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">
+                  <label class="label" >Introduzca la contraseña:</label>
+                </div>
+                <div class="field-body"style="padding-left: 1cm;padding-right: 1cm;">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="password" placeholder="Contraseña" id="contrasenaUsuario">
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="buttons is-responsive">
+                <button type = "submit" class="button is-link is-focused is-centered">Modificar usuario</button>
+                <button type = "reset" class="button is-danger is-centered">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>  
+      </p>
+    </div>
+    <!--Alta de tipos-->
+    <div id="contenidoTipoAlta" style="display: none;">
+      <p>    
+        <div class="notification is-primary">      
+          <div class="form-container" >
+            <form id = "formTipoAlta">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Listado de tipos penales:</label>
+                </div>
+                <table class="table is-bordered">
+                  <thead>
+                    <tr>
+                      <th>Tipo Penal</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaTipos">
+                    <!-- Aquí se muestran los datos de los tipos -->
+                  </tbody>
+                </table>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Introduzca el nuevo tipo penal:</label>
+                </div>
+                <div class="field-body" style="padding-left: 1cm;padding-right: 1cm;">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="text" placeholder="Nuevo tipo penal" name="nuevoTipo" id="nuevoTipo">
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="buttons is-responsive">
+                <button type ="submit" class="button is-link is-focused is-centered">Generar nuevo tipo penal</button>
+              </div>
+            </form> 
+          </div> 
+        </div>  
+      </p>
+    </div>
+      <!--baja tipos penales-->
+    <div id="contenidoTipoBaja" style="display: none;">
+      <div class="notification is-primary">      
+        <div class="form-container" >
+          <form id = "formTipoBaja">   
+            <div class="field is-horizontal has-background-light">
+              <div class="field-label is-normal" style="width: 50%;">
+                <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Seleccione el tipo penal a eliminar</label>
+              </div>
+              <div class="field-body" style="width: 50%;">
+                <div class="field">
+                  <div class="select is is-fullwidth">
+                    <select id="selectTipoBaja">
+                      <option selected value="elemento1">Elemento1</option>
+                      <option value="elemento2">elemento2</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="buttons is-responsive">
+              <button type ="submit" class="button is-danger is-centered">Eliminar tipo penal</button>
+            </div> 
+          </form>
+        </div>
+      </div>  
+    </div>
+  </body>
+</html>   

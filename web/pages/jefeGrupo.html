@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de gestión de denuncias</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="../js/jefeGrupo.js"></script>
+  </head>
+  <body>
+    <div class="box">
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Grupo de Investigación Tecnológica</p>
+              <p class="heading">-- A Coruña --</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="title">Sistema de Gestión de Denuncias</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <figure class="image is-128x128">
+                <img src="..\img\Policia_Nacional_A.png">
+              </figure> 
+            </div>
+        </div>
+        </nav>
+      </div>
+    </box>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="../img/Policia_Nacional_B.png" width="200" height="auto">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a id="grabacion" class="navbar-item">
+            Grabación de atestados
+          </a>
+          <a id="consulta" class="navbar-item">
+            Consulta de atestados
+          </a>
+          <a id="misInvestigaciones" class="navbar-item">
+            Mis investigaciones
+          </a>          
+        </div>
+      </div>
+    </div>
+    </nav>
+    <div id="contenidoGrabacion" style="display: none;">
+      <p>
+        <div class="form-container is-wide-screen is-primary">
+          <form id="formAtestadoAlta">
+            <div class="notification is-primary">      
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Número de asunto</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="number" placeholder="Número de asunto" id="numeroAsunto" readonly>
+                    </p>
+                  </div>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Asignada a:</label>
+                </div>
+                <div class="select">
+                  <select id="asignadaA">
+                    <option selected value="elemento1">elemento1</option>
+                    <option value="elemento2">elemento2</option>
+                  </select>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Fecha de entrada:</label>
+                </div>
+                  <input id='fecha' type="date">
+                </div>
+            </div>
+            <div class="notification is-primary">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Número de atestado</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="text" placeholder="Número de atestado" id="numeroAtestado">
+                    </p>
+                  </div>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Plantilla</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                  <p class="control">
+                      <input class="input" type="text" placeholder="Ej. Madrid Fuencarral" id="plantilla">
+                    </p>
+                  </div>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Ubicación</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="text" placeholder="Ej. Coruña" id="ubicacion">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="notification is-primary">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Nombre</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="text" placeholder="Nombre denunciante" id="nombre">
+                    </p>
+                  </div>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Apellido 1</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="text" placeholder="Apellido 1 denunciante" id="apellido1">
+                    </p>
+                  </div>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Apellido 2</label>
+                </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input class="input" type="text" placeholder="Apellido 2 denunciante" id="apellido2">
+                      </p>
+                    </div>
+                  </div>
+              </div>
+            </div>    
+            <div class="notification is-primary">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Subgrupo:</label>
+                </div>
+                <div class="select">
+                  <select id="subgrupo">
+                    <option vaule="Fraude" selected>Fraude</option>
+                    <option value="Redes">Redes</option>
+                    <option value="Otros">Otros</option>
+                  </select>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Tipo penal:</label>
+                </div>
+                <div class="select" >
+                  <select id="tipo">
+                    <option value="Estafa Internet" selected>Estafa Internet</option>
+                    <option value="Otros">Otros</option>
+                  </select>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Modus operandi:</label>
+                </div>
+                <div class="select">
+                  <select  id="modus">
+                    <option value="Utilización numeración tarjetas" selected>Utilización numeración tarjetas</option>
+                    <option value ="phising bancario">Phishing Bancario</option>
+                    <option value="Otros">Otros</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="notification is-primary">
+              <div class="field-label is-normal has-text-left">
+                <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Resumen del atestado:</label>
+              </div>
+              <textarea class="textarea is-success" placeholder="P.E. Víctima contactado por teléfono y engañada para facilitar datos de tarjeta de crédito." id="resumen"></textarea>
+            </div>
+            <div class="notification is-primary">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Número investiga:</label>
+                </div>
+                <p class="control">
+                  <input class="input" type="text" placeholder="Ej. LC0001/24" id="numeroInvestiga">
+                </p>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Nombre investigación:</label>
+                </div>
+                <p class="control">
+                  <input class="input" type="text" placeholder="Ej. TULIPA" id="nombreInvestigacion">
+                </p>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Cruce:</label>
+                </div>
+                <div class="select">
+                  <select  id="cruce">
+                    <option value="Sí" >Sí</option>
+                    <option value ="No" selected>No</option>
+                  </select>
+                </div>
+              </div>
+            </div>  
+            <div class="notification is-primary">
+              <div class="field is-horizontal has-background-light">
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Juzgado de Instrucción: </label>
+                </div>
+                <div class="select has-background-light" >
+                  <select id="juzgado">
+                    <option selected value="Aún sin judicializar">Aún sin judicializar</option>
+                    <option value="J.I. 1">J.I. 1</option>
+                    <option value="J.I. 2">J.I. 2</option>
+                    <option value="J.I. 3">J.I. 3</option>
+                    <option value="J.I. 4">J.I. 4</option>
+                    <option value="J.I. 5">J.I. 5</option>
+                    <option value="J.I. 6">J.I. 6</option>
+                    <option value="J.I. 7">J.I. 7</option>
+                    <option value="J.I. 8">J.I. 8</option>
+                  </select>
+                </div>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Diligencias previas:</label>
+                </div>
+                <p class="control">
+                  <input class="input" type="text" placeholder="Ej. DPA. 12/2024" id="diligenciasPrevias">
+                </p>
+                <div class="field-label is-normal">
+                  <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Oficio remitido:</label>
+                </div>
+                <p class="control">
+                  <input class="input" type="text" placeholder="Número oficio" id="numeroOficio">
+                </p>
+              </div>
+            </div>  
+            <div class="notification is-primary">
+              <div class="field-label is-normal has-text-left">
+                <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Gestiones realizadas:</label>
+              </div>
+              <textarea class="textarea is-success" placeholder="P.E. Solicitado mandamiento judicial a teleoperadora." id="gestiones"></textarea>
+            </div>
+            <div class="notification is-primary">
+              <div class="buttons is-responsive">
+                <button type="reset" class="button is-danger">Cancelar</button>
+                <button type="submit" class="button is-link is-focused">Alta de denuncia</button>
+              </div>    
+            </div>
+          </form> 
+        </div>
+      </p>
+    </div>
+    <div id="contenidoConsulta" style="display: none;">
+      <p>
+        <div class="form-container is-wide-screen is-primary">
+          <form id="formContenidoConsulta">
+              <div class="notification is-primary">      
+                <div class="field is-horizontal has-background-light">
+                  <div class="field-label is-normal">
+                    <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Número de asunto</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input class="input" type="number" placeholder="Número de asunto" id="numAsuntoBusca">
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Atestado</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Ej. 1234/24" id="atestadoBusca">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Diligencias previas</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Ej. 0000156/8" id="diligenciasBusca">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Denunciante</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Nombre" id="nombreBusca">
+                        </p>
+                      </div>
+                      <div class="field">
+                          <p class="control">
+                            <input class="input" type="text" placeholder="Apellido 1" id="apellido1Busca">
+                          </p>
+                        </div>
+                        <div class="field">
+                          <p class="control">
+                            <input class="input" type="text" placeholder="Apellido 2" id="apellido2Busca">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                </div>  
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Operación</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Ej. SUPALDI-S" id="investigacionBusca">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                <div>
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">   
+                    <div class="field-label is-normal">
+                      <label class="label"style="white-space: nowrap; padding-left: 1cm;padding-right: 1cm;">Asignada a:</label>
+                    </div>
+                    <div class="field-body" style="width: 50%;">
+                      <div class="field">
+                        <div class="select is-fullwidth">
+                          <select id="selectUsuarioBusca">
+                            <option selected value="elemento1">Elemento1</option>
+                            <option value="elemento2">elemento2</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="notification is-primary">
+                  <div class="buttons is-responsive">
+                    <button type="reset" class="button is-danger">Cancelar</button>
+                    <button type="submit" class="button is-link is-focused">Consultar</button>
+                </div>    
+              </div>
+            </div>
+          </div>
+        </form>
+      </div> 
+      </p>
+    </div>
+    <div id="contenidoResultadoConsulta" style="display: none;">
+      <div class="form-container is-wide-screen is-primary">
+        <div class="notification is-primary">      
+          <div class="field is-horizontal has-background-light">
+            <h1 class="title has-text-black" style="padding-left: 1cm; padding-right: 1cm; padding-top: 0,5cm;">Estos son los atestados:</h1>
+            <div class="table-container">
+                <table class="table is-bordered is-hoverable is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th>Número de Asunto</th>
+                      <th>Atestado</th>
+                      <th>Diligencias Previas</th>
+                      <th>Nombre</th>
+                      <th>Apellido 1</th>
+                      <th>Apellido 2</th>
+                      <th>Operación</th>
+                      <th>Asignado a</th>
+                    </tr>
+                  </thead>
+                <tbody id="tablaRespuesta">
+                  <!-- Aquí se agregarán las filas dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <div id="contenidoMisInvestigaciones" style="display: none">
+      <p>
+        <div class="form-container is-wide-screen is-primary">
+          <div class="notification is-primary">      
+            <div class="field is-horizontal has-background-light">
+              <h1 class="title has-text-black" style="padding-left: 1cm; padding-right: 1cm; padding-top: 0,5cm;">Estos son tus atestados:</h1>
+              <div class="table-container">
+                  <table class="table is-bordered is-hoverable is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>Número de Asunto</th>
+                        <th>Atestado</th>
+                        <th>Diligencias Previas</th>
+                        <th>Nombre</th>
+                        <th>Apellido 1</th>
+                        <th>Apellido 2</th>
+                        <th>Operación</th>
+                        <th>Investiga</th>
+                      </tr>
+                    </thead>
+                  <tbody id="tablaInvestigaciones">
+                    <!-- Aquí se agregarán las filas dinámicamente -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p>
+    </div>
+  </body>
+</html>

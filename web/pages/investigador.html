@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de gestión de denuncias: Investigador</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="../js/investigador.js"></script>
+  </head>
+  <body>
+    <div class="box">
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Grupo de Investigación Tecnológica</p>
+              <p class="heading">-- A Coruña --</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="title">Sistema de Gestión de Denuncias</p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <figure class="image is-128x128">
+                <img src="..\img\Policia_Nacional_A.png">
+              </figure> 
+            </div>
+        </div>
+        </nav>
+      </div>
+    </box>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="../img/Policia_Nacional_B.png" width="200" height="auto">
+        </a>
+      </div>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a id="consulta" class="navbar-item">
+            Consulta de atestados
+          </a>
+          <a id="misAtestados" class="navbar-item">
+            Mis atestados
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Contenido a mostrar -->    
+    <div id="listaMisAtestados" style="display: none">
+      <p>
+        <div class="form-container is-wide-screen is-primary">
+          <div class="notification is-primary">      
+            <div class="field is-horizontal has-background-light">
+              <h1 class="title has-text-black" style="padding-left: 1cm; padding-right: 1cm; padding-top: 0,5cm;">Estos son tus atestados:</h1>
+              <div class="table-container">
+                <table class="table is-bordered is-hoverable is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th>Número de Asunto</th>
+                      <th>Atestado</th>
+                      <th>Diligencias Previas</th>
+                      <th>Nombre</th>
+                      <th>Apellido 1</th>
+                      <th>Apellido 2</th>
+                      <th>Operación</th>
+                      <th>Investiga</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaInvestigaciones">
+                    <!-- Aquí se agregarán las filas dinámicamente -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p>
+    </div>
+    <div id="contenidoConsulta" style="display: none;">
+      <p>
+        <div class="form-container is-wide-screen is-primary">
+          <form id="formAtestadoAlta">
+              <div class="notification is-primary">      
+                <div class="field is-horizontal has-background-light">
+                  <div class="field-label is-normal">
+                    <label class="label">Número de asunto</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input class="input" type="number" placeholder="Número de asunto" id="numAsuntoBusca">
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label">Atestado</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Ej. 1234/24" id="atestadoBusca">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label">Diligencias previas</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Ej. 0000156/8" id="diligenciasBusca">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label">Denunciante</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Nombre" id="nombreBusca">
+                        </p>
+                      </div>
+                      <div class="field">
+                          <p class="control">
+                            <input class="input" type="text" placeholder="Apellido 1" id="apellido1Busca">
+                          </p>
+                        </div>
+                        <div class="field">
+                          <p class="control">
+                            <input class="input" type="text" placeholder="Apellido 2" id="apellido2Busca">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                </div>  
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">
+                    <div class="field-label is-normal">
+                      <label class="label">Operación</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input class="input" type="text" placeholder="Ej. SUPALDI-S" id="investigacionBusca">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                <div>
+                <div class="notification is-primary">      
+                  <div class="field is-horizontal has-background-light">   
+                    <div class="field-label is-normal">
+                      <label class="label">Asignada a:</label>
+                    </div>
+                    <div class="field-body" style="width: 50%;">
+                      <div class="field">
+                        <div class="select is-fullwidth">
+                          <select id="selectUsuarioBusca">
+                            <option selected value="elemento1">Elemento1</option>
+                            <option value="elemento2">elemento2</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="notification is-primary">
+                  <div class="buttons is-responsive">
+                    <button type="reset" class="button is-danger">Cancelar</button>
+                    <button type="submit" class="button is-link is-focused">Consultar</button>
+                </div>    
+              </div>
+            </div>
+          </div>
+        </form>
+      </div> 
+      </p>
+    </div>
+    <div id="contenidoResultadoConsulta" style="display: none;">
+      <div class="form-container is-wide-screen is-primary">
+        <div class="notification is-primary">      
+          <div class="field is-horizontal has-background-light">
+            <h1 class="title has-text-black" style="padding-left: 1cm; padding-right: 1cm; padding-top: 0,5cm;">Estos son los atestados:</h1>
+            <div class="table-container">
+              <table class="table is-bordered is-hoverable is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Número de Asunto</th>
+                    <th>Atestado</th>
+                    <th>Diligencias Previas</th>
+                    <th>Nombre</th>
+                    <th>Apellido 1</th>
+                    <th>Apellido 2</th>
+                    <th>Operación</th>
+                    <th>Asignado a</th>
+                  </tr>
+                </thead>
+                <tbody id="tablaRespuesta">
+                  <!-- Aquí se agregarán las filas dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </body>
+</html>
